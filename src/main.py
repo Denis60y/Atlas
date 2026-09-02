@@ -2,13 +2,14 @@ from ollama import Client
 from app.functions import available_functions
 from app.tools import tools_schema
 
+
 client = Client(host="http://localhost:11434", trust_env=False)
 
-def warmup_model(model_name: str):
+
+def warmup_model(model_name: str) -> None:
     """Отправляет тестовый запрос для загрузки модели в память до начала работы."""
     print("Загрузка и инициализация модели...", end="", flush=True)
     try:
-        # Простой лёгкий запрос для подгрузки весов
         client.chat(
             model=model_name,
             messages=[{"role": "user", "content": "ping"}],
@@ -18,8 +19,8 @@ def warmup_model(model_name: str):
         print(f"\nОшибка при инициализации модели: {e}")
 
 
-def start():
-    model_name = "atlas:v0"
+def start() -> None:
+    model_name = "atlas:v0.4"
 
     warmup_model(model_name)
 
