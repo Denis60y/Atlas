@@ -2,6 +2,8 @@ from ollama import Client
 from app.functions import available_functions
 from app.tools import tools_schema
 
+from core.utils.config import mainConfig
+
 
 client = Client(host="http://localhost:11434", trust_env=False)
 
@@ -20,7 +22,7 @@ def warmup_model(model_name: str) -> None:
 
 
 def start() -> None:
-    model_name = "atlas:v0.4"
+    model_name = mainConfig.get("model_name")
 
     warmup_model(model_name)
 
