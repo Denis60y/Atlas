@@ -41,7 +41,7 @@ level_info = {
 
 
 class Logger:
-    _tag = " logger"
+    _tag = "logger"
 
     _color: Colors = None
 
